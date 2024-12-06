@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <!--Authors: Tyler Bylsma, Joshua Park, Danyeol Chae-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Palace</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+Variable:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assignment5.css" />
+  </head>
+
+  <body>
+    <div class="header-container">Mario's Pizzeria</div>
+    <div class="nav-container">
+      <nav>
+        <ul>
+          <li><a href="index.html" onclick="navigateToHome(event)">Home</a></li>
+          <li><a href="#pizzas" onclick="navigateToMenu(event)">Menu</a></li>
+          <li><a href="#" id="cartButton" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="large-banner-container">
+      <div>
+        <div class="large-banner-title">Family Pizzeria</div>
+        WELCOME<br />
+        TO ORIGINAL<br />
+        ITALIAN<br />
+        PIZZERIA<br />
+      </div>
+      <div class="large-banner-images">
+        <img src="assets/ItalianPizza.jpg" alt="Italian Pizza" />
+        <img src="assets/ItalianMakingPizza.jpg" alt="Italian Making Pizza" />
+      </div>
+    </div>
+
+    <div class="menu-container">
+      <div class="menu-description">
+        <div class="menu-banner-title">From Our Menu</div>
+        THE BEST<br />
+        PIZZA <br />
+        MADE IN TOWN<br />
+        MARIO'S<br />
+      </div>
+    
+    <div id="pizzas"></div>
+      <div class="pizza-box-container">
+        <!-- pepperoni -->
+        <div class="pizza-box">
+          <div id="pizza-pepperoni" onclick="openModal('Pepperoni')">
+            <h3>Pepperoni Pizza</h3>
+            <p>
+              A classic favorite topped with spicy pepperoni slices and melted
+              mozzarella cheese over a rich tomato sauce.
+            </p>
+            <p>$9.00</p>
+          </div>
+          <img src="assets/Pepperoni.png" alt="Pepperoni Pizza" />
+        </div>
+         <!-- cheese -->
+        <div class="pizza-box">
+          <div id="pizza-cheese" onclick="openModal('Cheese')">
+            <h3>Cheese Pizza</h3>
+            <p>
+              A simple yet delicious option featuring a generous layer of gooey
+              mozzarella cheese atop a savory tomato base, perfect for cheese
+              lovers.
+            </p>
+            <p>$8.00</p>
+          </div>
+          <img src="assets/Cheese.webp" alt="Cheese Pizza" />
+        </div>
+          <!-- hawaiian -->
+        <div class="pizza-box">
+          <div id="pizza-hawaiian" onclick="openModal('Hawaiian')">
+            <h3>Hawaiian Pizza</h3>
+            <p>
+              A tropical twist combining sweet pineapple chunks and savory ham
+              on a cheesy base, creating a delightful balance of flavors.
+            </p>
+            <p>$10.00</p>
+          </div>
+          <img src="assets/Pineapple.png" alt="Hawaiian Pizza" />
+        </div>
+
+        <div class="pizza-box">
+          <div id="pizza-meatlovers" onclick="openModal('Meatlovers')">
+            <h3>Meatlovers Pizza</h3>
+            <p>
+              A hearty combination of pepperoni, sausage, bell peppers, onions,
+              and mushrooms on a layer of mozzarella cheese, offering a
+              flavor-packed experience.
+            </p>
+            <p>$11.00</p>
+          </div>
+          <img src="assets/Supreme.png" alt="Meatlovers Pizza" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-container">
+    <div class="footer-section">
+        <h3>Our Food</h3>
+        <ul>
+            <li>Pepperoni Pizza</li>
+            <li>Cheese Pizza</li>
+            <li>Hawaiian Pizza</li>
+            <li>Meatlovers Pizza</li>
+        </ul>
+    </div>
+
+    <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+            <li>Joshua Park: sp72@calvin.edu</li>
+            <li>Tyler Bylsma: tjb65@calvin.edu</li>
+            <li>Danyeol Chae: dc52@calvin.edu </li>
+        </ul>
+    </div>
+
+    <div class="footer-section">
+        <h3>Info</h3>
+        <ul>
+            <li>Opening Hours: 10 AM - 10 PM</li>
+            <li>Location: 123 Pizza Street</li>
+            <li>Call us: +123-456-7890</li>
+        </ul>
+    </div>
+    
+    <div class="footer-bottom-left">
+        Mario's Pizzeria
+    </div>
+</div>
+    <!-- Modal Structure -->
+
+    <div id="pizzaModal" class="modal">
+      <div class="modal-content">
+        <h3 id="modalPizzaTitle"></h3>
+        <label for="crust">Choose Crust:</label>
+        <select id="crust">
+          <option value="medium" data-price="0">Medium</option>
+          <option value="thin" data-price="1">Thin (+ $1.00)</option>
+          <option value="thick" data-price="1">Thick (+ $1.00)</option>
+        </select>
+        <br />
+        <label for="size">Choose Size:</label>
+        <select id="size">
+          <option value="small" data-price="0">Small</option>
+          <option value="medium" data-price="1">Medium (+ $1.00)</option>
+          <option value="large" data-price="2">Large (+ $2.00)</option>
+        </select>
+        <br /><br />
+
+        <!-- Quantity with buttons -->
+        <label>Quantity:</label>
+        <div class="quantity-container">
+          <button onclick="decreaseQuantity()">-</button>
+          <input type="text" id="quantity" value="1" min="1" readonly />
+          <button onclick="increaseQuantity()">+</button>
+        </div>
+
+        <div class="orderTotal">
+          <p>Total Price: $<span id="currentPrice">0</span></p>
+        </div>
+        <button onclick="addToCart()">Add to Cart</button>
+        <button onclick="closeModal()">Close</button>
+      </div>
+    </div>
+    
+    <div id="cartModal" class="modal">
+      <div class="modal-content">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <div id="totalPrice">Total Price: $<span>0</span></div>
+        <button onclick="closeCart()">Close</button>
+      </div>
+    </div>
+  
+    <script src="assignment5.js"></script>
+  </body>
+</html>
